@@ -4,13 +4,16 @@ using ContactList.Data;
 using Microsoft.EntityFrameworkCore;
 using ContactList.ViewModels;
 using ContactList.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContactList.Contrellers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("v1")]
     public class ContactListController : ControllerBase
     {
+        [AllowAnonymous]
         [HttpGet]
         [Route("contactList")]
         public async Task<IActionResult> GetAsync(
@@ -27,6 +30,7 @@ namespace ContactList.Contrellers
             return Ok(users);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("contactList/{id}")]
         public async Task<IActionResult> GetByIdAsync(
@@ -43,6 +47,7 @@ namespace ContactList.Contrellers
             return user == null ? NotFound() : Ok(user);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("contactList")]
         public async Task<IActionResult> PostAsync(
@@ -83,6 +88,7 @@ namespace ContactList.Contrellers
             }
         }
 
+        [AllowAnonymous]
         [HttpPut]
         [Route("contactList/{id}")]
         public async Task<IActionResult> PutAsync(
@@ -127,6 +133,7 @@ namespace ContactList.Contrellers
             }
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("contactList/{id}")]
         public async Task<IActionResult> DeleteAsync(
@@ -153,6 +160,7 @@ namespace ContactList.Contrellers
             }
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("contactList/phone/{id}")]
         public async Task<IActionResult> DeletePhoneAsync(
@@ -173,6 +181,7 @@ namespace ContactList.Contrellers
             }
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("contactList/email/{id}")]
         public async Task<IActionResult> DeleteEmailAsync(
@@ -193,6 +202,7 @@ namespace ContactList.Contrellers
             }
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("contactList/whatsapp/{id}")]
         public async Task<IActionResult> DeleteWhatsappAsync(
